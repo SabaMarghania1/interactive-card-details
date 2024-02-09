@@ -9,7 +9,16 @@
   --Very-dark-violet: hsl(278, 68%, 11%);
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 /* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
 
 /* interactive classes */
 .input__container.success input {
@@ -274,6 +283,12 @@ input::placeholder {
     width: 485px;
   }
 
+  .card__front,
+  card__back {
+    width: 440px;
+    height: 245px;
+  }
+
   .card__front {
     position: absolute;
     top: 187px;
@@ -291,8 +306,15 @@ input::placeholder {
     width: 483px;
     height: 245px;
   }
+
   .cvc {
     top: 115px;
     left: 400px;
+  }
+
+  .card__numbers {
+    font-size: 28px;
+    width: 390px;
+    letter-spacing: 3.422px;
   }
 }
