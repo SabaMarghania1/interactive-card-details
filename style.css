@@ -271,13 +271,28 @@ input::placeholder {
 
   .content__left {
     height: 100%;
-    width: 483px;
+    width: 485px;
   }
 
-  .card__back,
   .card__front {
-    max-width: 483px;
+    position: absolute;
+    top: 187px;
+    left: 60px;
+  }
+
+  .card__back {
+    position: absolute;
+    top: 470px;
+    left: 150px;
+  }
+
+  .card__back img,
+  .card__front img {
+    width: 483px;
     height: 245px;
-    position: relative;
+  }
+  .cvc {
+    top: 115px;
+    left: 400px;
   }
 }
