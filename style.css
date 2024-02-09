@@ -261,3 +261,23 @@ input::placeholder {
   font-size: 18px;
   margin-bottom: 48px;
 }
+
+@media screen and (min-width: 1440px) {
+  .content {
+    display: flex;
+    gap: 350px;
+    height: 100vh;
+  }
+
+  .content__left {
+    height: 100%;
+    width: 483px;
+  }
+
+  .card__back,
+  .card__front {
+    max-width: 483px;
+    height: 245px;
+    position: relative;
+  }
+}
