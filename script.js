@@ -118,7 +118,22 @@ form.addEventListener("submit", function (e) {
 
   if (isValid) {
     form.style.display = "none";
-
     successContainer.style.display = "block";
   }
 });
+
+// numberInput.addEventListener("input", e => {
+//   const regex = /.{4}/g;
+//   e.target.value = e.target.value.replace(regex, "$& ");
+// });
+
+numberInput.addEventListener(
+  "input",
+  () => (numberInput.value = formatNumber(numberInput.value.replaceAll(" ", "")))
+);
+
+const formatNumber = number =>
+  number.split("").reduce((seed, next, index) => {
+    if (index !== 0 && !(index % 4)) seed += " ";
+    return seed + next;
+  }, "");
