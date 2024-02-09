@@ -9,21 +9,25 @@
   --Very-dark-violet: hsl(278, 68%, 11%);
 }
 
+/* Firefox */
+q
 /* interactive classes */
-.success-border {
-  border-image: linear-gradient(to top, hsl(249, 99%, 64%), hsl(278, 94%, 30%)) 1;
-  border-width: 1px;
-  border-style: solid;
+.input__container.success input {
+  border-color: hsl(249, 99%, 64%);
 }
 
-.border-error {
-  border: 1px solid hsl(0, 100%, 66%);
+.input__container.error input {
+  border: 1px solid var(--error);
 }
 
-.error {
-  font-size: 10px;
-  color: red;
-  display: none;
+small {
+  color: tomato;
+  visibility: hidden;
+  font-size: 11px;
+}
+
+.input__container.error small {
+  visibility: visible;
 }
 /* ///////////////////////////////////////////////////// */
 
@@ -67,7 +71,7 @@ body {
   height: 100%;
 }
 
-.cvv {
+.cvc {
   position: absolute;
   top: 46%;
   right: 12%;
@@ -147,7 +151,7 @@ form {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  display: none;
+  /* display: none; */
 }
 
 .input__container {
@@ -221,11 +225,17 @@ input::placeholder {
   height: 48px;
   background-color: black;
   color: #fff;
+  cursor: pointer;
 }
 
 /* Success message */
 .success-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  display: none;
 }
 
 .success-container img {
@@ -237,6 +247,7 @@ input::placeholder {
   letter-spacing: 3.422px;
   text-transform: uppercase;
   margin-bottom: 16px;
+  width: 100%;
 }
 
 .success__subtitle {
