@@ -17,7 +17,34 @@ const cvcInput = document.getElementById("cvc");
 
 const form = document.getElementById("form");
 ////////////////////////////////////////////////////////////////////
-// Event Listeners
+
+// Helper Class Error
+function showError(input, message) {
+  const inputContainer = input.closest(".input__container");
+  inputContainer.classList.add("error");
+  const small = inputContainer.querySelector("small");
+  small.textContent = message;
+}
+
+// Helper class Success
+function showSuccess(input) {
+  const inputContainer = input.closest(".input__container");
+  inputContainer.classList.add("success");
+}
+
+function checkRequire(inputArr) {
+  inputArr.forEach(input => {
+    if (!input.value.length) {
+      showError(input, "Can't be blank");
+    } else {
+      showSuccess(input);
+    }
+  });
+}
+
+//  Event Listeners
 form.addEventListener("submit", function (e) {
   e.preventDefault();
+
+  checkRequire([nameInput, numberInput, monthInput, yearsInput, cvcInput]);
 });

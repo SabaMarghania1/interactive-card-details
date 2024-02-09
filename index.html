@@ -48,7 +48,7 @@
             />
             <small>Wrong format, letters only.</small>
           </div>
-          <div class="input__container success">
+          <div class="input__container">
             <label for="number">Card Number</label>
 
             <input
@@ -62,21 +62,31 @@
 
             <small>Wrong format, numbers only</small>
           </div>
-          <div class="input-container input__container-small">
+
+          <div class="inputs__wrapper">
             <div class="inputs__left">
               <label for="date">Exp. Date (MM/YY)</label>
               <div class="inputs">
-                <input id="mm" name="date" class="small-input" type="number" placeholder="MM" />
-                <input id="yy" name="date" class="small-input" type="number" placeholder="YY" />
+                <div class="input__container">
+                  <input id="mm" name="date" class="small-input" type="number" placeholder="MM" />
+                  <small></small>
+                </div>
+                <div class="input__container">
+                  <input id="yy" name="date" class="small-input" type="number" placeholder="YY" />
+                  <small>Can't be blank</small>
+                </div>
+              </div>
+            </div>
+            <div class="inputs__right">
+              <div class="input__container">
+                <label for="cvc">cvc</label>
+                <input type="number" id="cvc" name="cvc" placeholder="e.g 123" />
+                <small>Can't be blank</small>
               </div>
               <small>Can't be blank</small>
             </div>
-            <div class="inputs__right">
-              <label for="cvc">cvc</label>
-              <input type="number" id="cvc" name="cvc" placeholder="e.g 123" />
-              <small>Can't be blank</small>
-            </div>
           </div>
+
           <button class="btn">Confirm</button>
         </form>
 

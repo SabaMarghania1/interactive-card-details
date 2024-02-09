@@ -10,10 +10,10 @@
 }
 
 /* Firefox */
-q
+
 /* interactive classes */
 .input__container.success input {
-  border-color: hsl(249, 99%, 64%);
+  border: 1px solid hsl(249, 99%, 64%);
 }
 
 .input__container.error input {
@@ -161,6 +161,12 @@ form {
   gap: 3px;
 }
 
+.inputs__wrapper {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
 label {
   color: var(--Very-dark-violet);
   font-size: 12px;
@@ -214,7 +220,7 @@ input::placeholder {
   gap: 5px;
 }
 #cvc {
-  width: 164px;
+  width: 144px;
   height: 45px;
 }
 
