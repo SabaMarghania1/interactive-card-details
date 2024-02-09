@@ -16,10 +16,16 @@ const yearsInput = document.getElementById("yy");
 const cvcInput = document.getElementById("cvc");
 
 const form = document.getElementById("form");
+/////////////////////////////////////////////////////////////////////////
+const successContainer = document.querySelector(".success-container");
+
+let isValid = true;
+
 ////////////////////////////////////////////////////////////////////
 
 // Helper Class Error
 function showError(input, message) {
+  isValid = false;
   const inputContainer = input.closest(".input__container");
   inputContainer.classList.add("error");
   const small = inputContainer.querySelector("small");
@@ -46,12 +52,13 @@ function checkRequire(inputArr) {
 
 // checking the value  of name
 function checkName(input) {
-  const re = /^[A-Za-z]+$/;
+  const re = /^[A-Za-z]+ [A-Za-z]+$/;
 
   if (!re.test(input.value.trim())) {
     showError(input, "Wrong format, letters only");
   } else {
     showSuccess(input);
+    cardInfo.textContent = input.value;
   }
 }
 
@@ -66,6 +73,7 @@ function checkCardNumbers(input) {
     showError(input, "Wrong card code");
   } else {
     showSuccess(input);
+    cardNumbers.textContent = input.value;
   }
 }
 
@@ -82,6 +90,9 @@ function checkDate(input1, input2) {
   if (month < 1 || month > 12) {
     showError(input2, "Invalid Month");
   }
+
+  cardYears.textContent = input1.value;
+  cardMonths.textContent = input2.value;
 }
 
 // checking cvc
@@ -90,6 +101,7 @@ function checkCvc(input) {
     showError(input, "Invalid cvc");
   } else {
     showSuccess(input);
+    cvcElement.textContent = input.value;
   }
 }
 //  Event Listeners
@@ -97,9 +109,16 @@ function checkCvc(input) {
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
+  isValid = true;
   checkRequire([nameInput, numberInput, monthInput, yearsInput, cvcInput]);
   checkName(nameInput);
   checkCardNumbers(numberInput);
   checkDate(yearsInput, monthInput);
   checkCvc(cvcInput);
+
+  if (isValid) {
+    form.style.display = "none";
+
+    successContainer.style.display = "block";
+  }
 });
