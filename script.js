@@ -29,9 +29,11 @@ function showError(input, message) {
 // Helper class Success
 function showSuccess(input) {
   const inputContainer = input.closest(".input__container");
+  inputContainer.classList.remove("error");
   inputContainer.classList.add("success");
 }
 
+// check for blank
 function checkRequire(inputArr) {
   inputArr.forEach(input => {
     if (!input.value.length) {
@@ -42,9 +44,62 @@ function checkRequire(inputArr) {
   });
 }
 
+// checking the value  of name
+function checkName(input) {
+  const re = /^[A-Za-z]+$/;
+
+  if (!re.test(input.value.trim())) {
+    showError(input, "Wrong format, letters only");
+  } else {
+    showSuccess(input);
+  }
+}
+
+// checking if the card contain only numbers
+
+function checkCardNumbers(input) {
+  const re = /^\d+(?:\s\d+)*$/;
+
+  if (!re.test(input.value.trim())) {
+    showError(input, "Wrong format, numbers only ");
+  } else if (input.value.length !== 19) {
+    showError(input, "Wrong card code");
+  } else {
+    showSuccess(input);
+  }
+}
+
+// Checking months and years
+
+function checkDate(input1, input2) {
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = parseInt(input2.value, 10);
+
+  if (+input1.value < year) {
+    showError(input1, `it's impossible because current year is ${year}`);
+  }
+  if (month < 1 || month > 12) {
+    showError(input2, "Invalid Month");
+  }
+}
+
+// checking cvc
+function checkCvc(input) {
+  if (input.value.length < 3) {
+    showError(input, "Invalid cvc");
+  } else {
+    showSuccess(input);
+  }
+}
 //  Event Listeners
+
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
   checkRequire([nameInput, numberInput, monthInput, yearsInput, cvcInput]);
+  checkName(nameInput);
+  checkCardNumbers(numberInput);
+  checkDate(yearsInput, monthInput);
+  checkCvc(cvcInput);
 });
